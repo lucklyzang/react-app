@@ -1,0 +1,24 @@
+$primary: blue;
+$secondary: yellow;
+$success: green;
+$info: rgb(243, 204, 31);
+$warning: #92bef0;
+$danger: red;
+$light: yellow;
+$dark: black;
+$theme-colors:
+(
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+@each $key, $val in $theme-colors {
+    .icon-#{$key} {
+        color: $val;
+    } 
+}

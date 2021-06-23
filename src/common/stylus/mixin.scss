@@ -1,0 +1,56 @@
+/*flex布局*/
+@mixin content-wrapper() {
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  flex-direction: column;
+  background: #fff
+}
+/*超出长度省略号 */
+@mixin ell() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+/* clearfix */
+@mixin clearfix() {
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden
+  }
+  *height: 1%;
+}
+// 一像素下边框
+@mixin bottom-border-1px($color) {
+  position: relative;
+  border: none;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color;
+    transform: scaleY(0.5)
+  }
+}
+// 一像素上边框
+@mixin top-border-1px($color) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color
+  } 
+}

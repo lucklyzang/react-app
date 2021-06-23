@@ -1,0 +1,65 @@
+@import "@/common/stylus/mixin.scss";
+.login-wrapper {
+    @include content-wrapper();
+    .bg-icon {
+        overflow: auto;
+        margin: 0 auto;
+        width: 100%;
+        height: 50vh;
+        img {
+            width: 100%;
+            height: 100%
+        }
+    };
+    .form-wrapper {
+        width: 90%;
+        margin: 0 auto;
+        flex: 1;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        /deep/ .am-list {
+            .am-list-body {
+                .am-input-item {
+                    height: 50px;
+                    .am-list-line {
+                        margin-bottom: 5px;
+                        @include bottom-border-1px(#cecece);
+                        .am-input-label {
+                            font-size: 15px;
+                            color: #686868
+                        };
+                        .am-input-control {
+                            input{
+                                font-size: 15px;
+                            }
+                        };
+                        .am-input-clear {
+                        }
+                    }    
+                }
+            };
+            .am-list-body::before {
+                display: none
+            };
+            .am-list-body::after {
+                display: none
+            }
+        };
+        .loading-wrapper {
+            text-align: center;
+            margin-top: 100px;
+            color: #c5c5c5;
+            font-size: 15px
+        }
+    };
+    .enter-wrapper {
+        width: 90%;
+        height: 60px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+            height: 100%
+        }
+    }
+}
