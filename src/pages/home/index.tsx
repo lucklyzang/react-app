@@ -63,6 +63,7 @@ class Home extends React.Component<Props,IState> {
       this.props.history.push("/");
     })
   }
+
   render() {
     return (
       <div>
