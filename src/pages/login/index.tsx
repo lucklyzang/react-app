@@ -8,12 +8,8 @@ import loginBtnPng from '@/assets/images/login-btn.png'
 import './login.scss';
 import { getStore,setStore, removeStore} from '@/common/ts/utils'
 import {ILoginStore} from '@/models/store/ILoginStore'
-interface Props {
-  loginStore: ILoginStore,
-  history: any
-}
 interface Props extends RouteComponentProps {
-
+  loginStore: ILoginStore
 }
 interface State{
   num1:number,
@@ -55,10 +51,11 @@ class Login extends React.Component<Props,State> {
     LogIn({username: this.state.accountName, password: this.state.password, rememberMe: 1}).then((res) => {
       this.props.loginStore.showLoadingChange(false);
       if (res.code == 200) {
-        this.props.loginStore.storeUserInfo(res.data);
+        this.props.loginStore.storeUserInfo(JSON.stringify(res.data));
         this.props.loginStore.changeIsLogin(true);
-        this.props.history.push('/home');
-        console.log('用户信息',this.props.loginStore.userInfo,this.props.loginStore.isLogin);
+        setStore("userInfo",res.data);
+        setStore("isLogin","true");
+        this.props.history.push({'pathname':'/home',state:{'name':1}});
       } else {
         Toast.info(`${res.msg}`);
       }

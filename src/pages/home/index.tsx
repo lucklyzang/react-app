@@ -36,7 +36,7 @@ class Home extends React.Component<Props,IState> {
   }
 
   jumpOtherPage ():void {
-    this.props.history.push("/")
+    this.props.history.push("/404")
   }
 
   signOutlogin ():void {
@@ -44,7 +44,10 @@ class Home extends React.Component<Props,IState> {
     UserSignOut(this.props.loginStore.userInfo.id,this.props.loginStore.userInfo.proId).then((res) => {
       if (res.code == 200) {
         this.props.loginStore.changeIsLogin(false);
-        this.props.history.push("/");
+        removeStore('isLogin');
+        removeStore('userInfo');
+        removeStore('carry_token');
+        this.props.history.push("/")
       } else {
         Toast.info(`${res.msg}`);
       }
@@ -77,7 +80,7 @@ class Home extends React.Component<Props,IState> {
         <Button  type="warning" onClick={() => {this.props.homeStore.lessNum();console.log(this.props.homeStore.homeNum)}}>
           点击删除
         </Button>
-        <Button type="primary" onClick={this.jumpOtherPage}>跳转到登录页</Button>
+        <Button type="primary" onClick={this.jumpOtherPage}>跳转到其它页</Button>
         <Button type="primary" onClick={this.signOutlogin}>退出登录</Button>
         <Icon icon='ad' size='3x' theme='success' />
       </div>

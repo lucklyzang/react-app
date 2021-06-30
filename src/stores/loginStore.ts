@@ -12,7 +12,7 @@ class LoginStore implements ILoginStore {
         this.isLogin = msg
     };
     @action storeUserInfo(msg:any) {
-        this.userInfo = msg
+        this.userInfo = JSON.parse(msg)
     };
     @action showLoadingChange(msg:any) {
         this.showLoading = msg
